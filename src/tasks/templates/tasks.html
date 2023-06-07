@@ -1,0 +1,23 @@
+{% extends 'index.html' %} {% block content %}
+ <main class="container">
+    <div class="row">
+        <h1 class="display-6">Welcome Back {{ user }}</h1>
+        <div class="col-md-6 offset-md-3">
+          {% if user.is_authenticated %}
+          <h1 class="text-center display-3 py-5">Tasks Pending</h1>
+          <ul class="list-group">
+            {% for task in tasks %}
+            <li class="list-group-item">
+              <a class="text-decoration-none text-dark" href={% url 'task_detail' task.id %}>
+                <h1>{{ task.title }}</h1>
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+    </div>
+ </main>
+{% endblock %}
+
+
